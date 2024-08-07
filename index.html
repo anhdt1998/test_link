@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Redirect...</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script>
+    var appurl = 'marry://open';
+    var appstore = 'https://apps.apple.com/vn/app/mic-b%E1%BA%A3o-hi%E1%BB%83m-qu%C3%A2n-%C4%91%E1%BB%99i/id1630362553?l=vi';
+
+    var timeout;
+    function start() {
+      window.location = appurl;
+      timeout = setTimeout(function(){
+        if(confirm('Open store ?')){
+          document.location = appstore;
+        }
+      }, 1000);
+    }
+
+    window.onload = function() {
+      start()
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
