@@ -27,7 +27,7 @@
     })">Send Map Data to Flutter</button>
 
     <script>
-        const myHandlerName = function(...args) {
+        const sendMapData = function(...args) {
             if (window.flutter_inappwebview) {
                 return window.flutter_inappwebview.callHandler('survey_handler', ...args);
             } else {
