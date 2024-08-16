@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InAppWebView PostMessage</title>
+    <title>InAppWebView Handler Template</title>
     <style>
         body {
             display: flex;
@@ -21,16 +21,16 @@
 </head>
 <body>
 
-    <button onclick="sendMessage()">Send Message to Flutter</button>
+    <button onclick="myHandlerName('Hello from WebView!')">Send Message to Flutter</button>
 
     <script>
-        function sendMessage() {
+        const myHandlerName = function(...args) {
             if (window.flutter_inappwebview) {
-                window.flutter_inappwebview.postMessage('Hello from WebView!');
+                return window.flutter_inappwebview.callHandler('myHandlerName', ...args);
             } else {
                 console.log('InAppWebView not detected.');
             }
-        }
+        };
     </script>
 
 </body>
