@@ -21,12 +21,15 @@
 </head>
 <body>
 
-    <button onclick="myHandlerName('Hello from WebView!')">Send Message to Flutter</button>
+    <button onclick="sendMapData({
+        position: 'Position',
+        data: 'abcxyz' 
+    })">Send Map Data to Flutter</button>
 
     <script>
         const myHandlerName = function(...args) {
             if (window.flutter_inappwebview) {
-                return window.flutter_inappwebview.callHandler('myHandlerName', ...args);
+                return window.flutter_inappwebview.callHandler('survey_handler', ...args);
             } else {
                 console.log('InAppWebView not detected.');
             }
