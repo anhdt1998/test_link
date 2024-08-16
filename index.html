@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InAppWebView Handler Template</title>
+    <title>InAppWebView Handler with Map Data</title>
     <style>
         body {
             display: flex;
@@ -22,14 +22,23 @@
 <body>
 
     <button onclick="sendMapData({
-        position: 'Position',
-        data: 'abcxyz' 
-    })">Send Map Data to Flutter</button>
+        message: 'Hello from WebView!',
+        timestamp: new Date().toISOString(),
+        additionalInfo: {
+            user: 'JohnDoe',
+            action: 'click'
+        }
+    })">Send Map Data to Flutter 1</button>
 
     <script>
-        const sendMapData = function(...args) {
+        const sendMapData = function(data) {
             if (window.flutter_inappwebview) {
-                return window.flutter_inappwebview.callHandler('survey_handler', ...args);
+                window.flutter_inappwebview.callHandler('myHandlerName', data)
+                .then(function(response) {
+                    console.log('Response from Flutter:', response);
+                }).catch(function(error) {
+                    console.log('Error:', error);
+                });
             } else {
                 console.log('InAppWebView not detected.');
             }
